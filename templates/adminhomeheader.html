@@ -1,0 +1,258 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <a href="/admin_home">HOME</a>
+    
+   <a href="/admin_manage_department">DEPARTMENT</a>
+    <a href="/admin_view_teacher">TEACHER</a>
+    <a href="/admin_view_stud">STUDENTS</a>
+    <a href="/admin_view_exam">EXAM</a>
+    <a href="/admin_complaint_send_reply">COMPLAINT</a>
+    <a href="/logout">LOGOUT</a>
+ -->
+
+
+
+
+
+
+      <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
+       ><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+       <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
+       ><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+
+
+
+       <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="/static/admin_dash_board/vendors/feather/feather.css">
+  <link rel="stylesheet" href="/static/admin_dash_board/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="/static/admin_dash_board/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="/static/admin_dash_board/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="/static/admin_dash_board/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="/static/admin_dash_board/js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/static/admin_dash_board/css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="/static/admin_dash_board/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  
+</head>
+
+<body style="background-color: #c5cdef39;">
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <div class="site_logo"><a class="site_link" href="/adminhome"><img width="50%" src="/static/styles/images/wwww.png"
+              alt="Collab - Online Learning Platform"></a></div>
+        <!-- <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="/static/admin_dash_board/images/logo.svg" class="mr-2" -->
+        <!-- alt="logo" /></a> -->
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/static/admin_dash_board/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <!-- <span class="icon-menu"></span> -->
+        </button>
+        <!-- <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
+                aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul> -->
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+              data-toggle="dropdown">
+              <!-- <i class="icon-bell mx-0"></i> -->
+              <!-- <span class="count"></span> -->
+            </a>
+            <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+              aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item preview-item" href="/admin_send_notification">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="fas fa-comment-alt mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Sent Notifications</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+
+                  </p>
+                </div>
+              </a>
+
+
+            </div> -->
+          </li>
+          <!-- <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="/static/admin_dash_board/images/faces/face28.jpg" alt="profile" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+
+              <a href="/login" class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li> -->
+          <li class="nav-item nav-settings d-none d-lg-flex">
+
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="admin_home">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Home</span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">UI Elements</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+              </ul>
+            </div>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link"  href="admin_manage_department" 
+             >
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Department</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+            <!-- <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+              </ul>
+            </div> -->
+          </li>
+          <li class="nav-item">
+            <!-- Font Awesome CDN -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <!-- Font Awesome CDN -->
+            <a class="nav-link" href="admin_view_teacher" >
+              <i class="fas fa-chalkboard-teacher menu-icon"></i>
+              <span class="menu-title">Teachers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="admin_view_stud">
+              <i class="fas fa-user-graduate menu-icon"></i>
+              <span class="menu-title">Students</span>
+
+            </a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_view_exam"  >
+              <i class="fas fa-file-alt menu-icon"></i>
+              <span class="menu-title">Exams</span>
+            </a>
+           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="admin_complaint_send_reply" >
+              <i class="fas fa-exclamation-circle menu-icon"></i>
+              <span class="menu-title">Complaints</span>
+              
+            </a>
+          
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+              <i class="icon-ban menu-icon"></i>
+              <span class="menu-title">Error pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="error">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+              </ul>
+            </div>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="logout">
+              <i class="fas fa-sign-out-alt menu-icon"></i>
+              <span class="menu-title">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+
+      
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+  {% for message in messages %}
+  <script type="text/javascript">alert("{{message}}")</script>
+  {% endfor %}
+</ul>
+{% endif %}
+{%endwith%}
+      <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
+       ><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> --><!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br
+       ><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b
+       r><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->

@@ -1,0 +1,62 @@
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul class="flashes">
+    {% for message in messages %}
+    <script type="text/javascript">alert("{{message}}")</script>
+    {% endfor %}
+	</ul>
+	{% endif %}
+	{%endwith%}
+
+ <!--================Footer Area =================-->
+        <footer class="footer-3 ">
+            <div class="footer-shapes">
+                <div class="shape">
+                    <img class="wow fadeInLeft" data-wow-delay="0.5s" src="/static/styles/images/shape-1.png" alt="">
+                </div>
+                <div class="shape">
+                    <img src="/static/styles/images/shape-2.png" alt="">
+                </div>
+            </div>
+            <div class="container">
+               
+                <div class="footer-bottom pt-40 pb-40">
+                    <div class="d-flex justify-content-between flex-wrap">
+
+                        <p class="wow fadeInRight">Copyright 2021, All Rights Reserved</p>
+                        <ul class="footer-menu list-unstyled wow fadeInLeft">
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--================End Footer Area =================-->
+    </div>
+
+    <!-- Back to top button -->
+    <a id="back-to-top" title="Back to Top"></a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    
+    <script src="/static/styles/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/styles/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/styles/js/pre-loader.js"></script>
+    <script src="/static/styles/js/slick.min.js"></script>
+    <script src="/static/styles/js/jquery.parallax-scroll.js"></script>
+    <script src="/static/styles/js/jquery.nice-select.min.js"></script>
+    <script src="/static/styles/js/wow.min.js"></script>
+    <script src="/static/styles/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/static/styles/js/jquery.waypoints.min.js"></script>
+    <script src="/static/styles/js/jquery.counterup.min.js"></script>
+    <script src="/static/styles/js/plugins.js"></script>
+    <script src="/static/styles/js/ionicons.js"></script>
+    <script src="/static/styles/js/main.js"></script>
+
+
+</body>
+
+</html>

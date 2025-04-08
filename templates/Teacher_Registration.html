@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="/static/styles/css/bootstrap.min.css">
+     <link rel="stylesheet" href="/static/styles/css/slick.css">
+     <link rel="stylesheet" href="/static/styles/css/slick-theme.css">
+     <!-- icon css-->
+     <link rel="stylesheet" href="/static/styles/css/style.css">
+     <link rel="stylesheet" href="/static/styles/css/nice-select.css">
+     <link rel="stylesheet" href="/static/styles/css/animate.css">
+     <link rel="stylesheet" href="/static/styles/css/jquery.mCustomScrollbar.min.css">
+     <link rel="stylesheet" href="/static/styles/css/style-main.css">
+     <link rel="stylesheet" href="/static/styles/css/responsive.css">
+     <title>AI QUESTION & ANSWERS</title>
+ </head>
+ 
+ <body data-scroll-animation="true">
+     <div id="preloader">
+         <div id="ctn-preloader" class="ctn-preloader">
+             <div class="round_spinner">
+                 <div class="spinner"></div>
+ 
+                 <img src="/static/styles/images/wwww.png" width="75%" alt="">
+ 
+             </div>
+ 
+         </div>
+     </div>
+     <div class="body_wrapper">
+ 
+ 
+         <!--================Navbar Area =================-->
+         <nav class="navbar navbar-expand-lg  menu_one sticky-nav d-none d-lg-block">
+             <div class="container">
+                 
+ 
+ 
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav menu ms-auto">
+                         <li class="nav-item dropdown submenu active">
+                             <a href="/" class="nav-link dropdown-toggle" style="color: rgb(255, 255, 255);">Home</a>
+                             
+                         </li>
+                         <li class="nav-item dropdown submenu">
+                             <a class="nav-link dropdown-toggle" href="/Teacher_Registration" role="button" data-bs-toggle="dropdown"
+                                 aria-haspopup="true"style="color: white;" aria-expanded="false">
+                                 Teacher
+                             </a>
+                             
+                         </li>
+                         
+                     </ul>
+                     <div class="right-nav">
+                         <a class="action_btn btn_small_two btn-text-medium round-btn-2" href="/login">Sign In</a>
+ 
+                     </div>
+                 </div>
+             </div>
+         </nav>
+         <div class="mobile_main_menu sticky-nav menu_one">
+             <div class="container">
+                 <div class="mobile_menu_left">
+                     <button type="button" class="navbar-toggler mobile_menu_btn">
+                         <span class="menu_toggle ">
+                             <span class="hamburger">
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                             </span>
+                         </span>
+                     </button>
+                     <a class="navbar-brand header_logo" href="index.html">
+                         <img class="sticky_logo " src="/static/styles/images/eee.png"
+                             srcset="/static/styles/images/logo-2x.png 2x" alt="logo">
+                         <img class="main_logo white_logo" src="/static/styles/images/logo.png"
+                             srcset="/static/styles/images/logo.png" alt="logo">
+                     </a>
+                 </div>
+                 <div class="mobile_menu_right">
+                     <div class="right-nav">
+                         <div class="px-2 js-darkmode-btn" title="Toggle dark mode">
+                             <label for="something2" class="tab-btn tab-btns">
+                                 <ion-icon name="moon"></ion-icon>
+                             </label>
+                             <label for="something2" class="tab-btn">
+                                 <ion-icon name="sunny"></ion-icon>
+                             </label>
+                             <label class=" ball" for="something2"></label>
+                             <input type="checkbox" name="something2" id="something2" class="dark_mode_switcher">
+                         </div>
+                     </div>
+                 </div>
+ 
+             </div>
+         </div>
+         <div class="side_menu">
+             <div class="mobile_menu_header">
+                 <div class="close_nav">
+                     <i class="icon_close"></i>
+                 </div>
+                 <div class="mobile_logo">
+                     <a class="navbar-brand header_logo me-0" href="index.html">
+                         <img class="sticky_logo main_logo" src="/static/styles/images/logo.png"
+                             srcset="/static/styles/images/logo-2x.png 2x" alt="logo">
+                         <img class="white_logo" src="/static/styles/images/logo.png"
+                             srcset="/static/styles/images/logo-w2x.png 2x" alt="logo">
+                     </a>
+                 </div>
+             </div>
+             <div class="mobile_nav_wrapper">
+                 <nav class="mobile_nav_top">
+                     <ul class="navbar-nav menu ms-auto">
+                         <li class="nav-item dropdown submenu active">
+                             <a href="/" class="nav-link dropdown-toggle">Home</a>
+                             <i class="arrow_carrot-down_alt2 mobile_dropdown_icon"></i>
+                            
+                         </li>
+                         <li class="nav-item dropdown submenu">
+                             <a class="nav-link dropdown-toggle" href="/Teacher_Registration">
+                                 Teacher
+                             </a>
+                             
+                         </li>
+                         
+                     </ul>
+                 </nav>
+             </div>
+         </div>
+
+<style>
+    body {
+        background: #1a1a1a;
+        color: #fff;
+    }
+    
+    .registration-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 30px;
+        background: #2d2d2d;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .form-title {
+        text-align: center;
+        color: #4CAF50;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .registration-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    .registration-table td {
+        padding: 15px;
+        background: #333;
+        border: none;
+    }
+
+    .registration-table tr:hover td {
+        background: #404040;
+        transition: all 0.3s ease;
+    }
+
+    .label-cell {
+        width: 30%;
+        text-align: right;
+        color: #4CAF50;
+        font-weight: bold;
+        border-radius: 8px 0 0 8px;
+    }
+
+    .input-cell {
+        border-radius: 0 8px 8px 0;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        background: #404040;
+        border: 1px solid #4CAF50;
+        border-radius: 6px;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+        background: #505050;
+        border-color: #65d668;
+        outline: none;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 12px;
+        background: #404040;
+        border: 1px solid #4CAF50;
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .file-input {
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .submit-btn {
+        background: linear-gradient(145deg, #4CAF50, #45a049);
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 30px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 20px rgba(76, 175, 80, 0.4);
+        background: linear-gradient(145deg, #45a049, #4CAF50);
+    }
+</style>
+<br><br><br><br>
+
+<div class="registration-container">
+    <h2 class="form-title">Teacher Registration Form</h2>
+    <form method="post" enctype="multipart/form-data">
+        <table class="registration-table">
+            <tr>
+                <td class="label-cell">First Name:</td>
+                <td class="input-cell"><input type="text" name="first_name" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Last Name:</td>
+                <td class="input-cell"><input type="text" name="last_name" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Date of Birth:</td>
+                <td class="input-cell"><input type="date" name="dob" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Gender:</td>
+                <td class="input-cell">
+                    <select name="gender" required class="form-select">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">Place:</td>
+                <td class="input-cell"><input type="text" name="place" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Education Proof:</td>
+                <td class="input-cell"><input type="file" name="education_proof" required class="file-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Email:</td>
+                <td class="input-cell"><input type="email" name="email" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Phone:</td>
+                <td class="input-cell"><input type="text" name="phone" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Photo:</td>
+                <td class="input-cell"><input type="file" name="photo" required class="file-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Username:</td>
+                <td class="input-cell"><input type="text" name="uname" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Password:</td>
+                <td class="input-cell"><input type="password" name="psd" required class="form-input"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; background: transparent;">
+                    <button type="submit" name="teach" class="submit-btn">Register</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<br><br><br><br><br>
+
+{% include 'footer.html' %}

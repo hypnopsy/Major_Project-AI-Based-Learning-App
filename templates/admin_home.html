@@ -1,0 +1,227 @@
+{%include 'adminhomeheader.html'%}
+
+
+
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="row">
+          <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Welcome Admin</h3>
+            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span
+                class="text-primary">{{data['count']}}
+                unread Complaints!</span></h6>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card tale-bg">
+          <div class="card-people mt-auto">
+            <img src="/static/admin_dash_board/images/dashboard/hhh.png" alt="people">
+            <div class="weather-info">
+              <div class="d-flex">
+                <div></div>
+                <div class="ml-2">
+                  <h6 id="current-time" class="time-display font-weight-normal"></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        /* Styling for the time display */
+        .time-display {
+          font-size: 1.5em;
+          /* Larger font size for readability */
+          color: #ffffff;
+          /* White text color */
+          background-color: #396daf;
+          /* Dark background color */
+          padding: 10px 15px;
+          /* Padding around the text */
+          border-radius: 8px;
+          /* Rounded corners */
+          box-shadow: 0 4px 6px rgba(238, 0, 0, 0.3);
+          /* Subtle shadow for depth */
+          display: inline-block;
+          /* Keeps it inline */
+          margin-top: 10px;
+          /* Adds space above */
+          text-align: center;
+          /* Centers the text */
+        }
+      </style>
+
+      <script>
+        function updateTime() {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, '0');
+          const minutes = now.getMinutes().toString().padStart(2, '0');
+          const seconds = now.getSeconds().toString().padStart(2, '0');
+          document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Initial time update and refresh every second
+        updateTime();
+        setInterval(updateTime, 1000);
+      </script>
+
+
+      <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+              <div class="card-body">
+                <p class="mb-4">Teachers</p>
+                <p>Total : {{data['tcount']}}
+
+                </p>
+                <p>Accepted : {{data['accepted_count']}}</p>
+                <p>Rejected : {{data['rejected_count']}}</p>
+                <!-- <p>22.00% (30 days)</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+              <div class="card-body">
+                <p class="mb-4">Details</p>
+                <p>Departments: {{data['decount']}}</p>
+                <p>Courses: {{data['ccount']}}</p>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+              <div class="card-body">
+                <p class="mb-4">Students</p>
+                <p class="fs-30 mb-2">{{data['studcount']}}</p>
+                <!-- <p></p> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-7 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title mb-0">Teachers</p>
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Place</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for i in data['teach']%}
+                  <tr>
+                    <td>{{i['first_name']}} {{i['last_name']}}</td>
+                    <td class="font-weight-bold">{{i['place']}}</td>
+                    <td>{{i['phone']}}</td>
+                    <td>{{i['email']}}</td>
+                    {%if i['status'] == 'approve' %}
+                    <td class="font-weight-medium">
+                      <div class="badge badge-success">Approved</div>
+                    </td>
+                    {%else%}
+                    <td class="font-weight-medium">
+                      <div class="badge badge-warning">Rejected</div>
+                    </td>
+                    {%endif%}
+                  </tr>
+                  {%endfor%}
+
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 grid-margin stretch-card">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Notifications</p>
+            <ul class="icon-data-list">
+              <li>
+                {%for i in data['feed']%}
+                <div class="d-flex">
+                 
+                  <img src="/{{i['photo']}}" alt="user">
+
+                  <div>
+                    <p class="text-info mb-1">{{i['firstname']}} {{i['lastname']}}</p>
+                    <p class="mb-0">{{i['feedback']}}</p>
+                    <small>{{i['time']}}</small>
+                  </div>
+                  
+
+                </div>
+                {%endfor%}
+
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Students</p>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="example" class="display expandable-table" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>Quote#</th>
+                        <th>Product</th>
+                        <th>Business type</th>
+                        <th>Policy holder</th>
+                        <th>Premium</th>
+                        <th>Status</th>
+                        <th>Updated at</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div> -->
+  </div>

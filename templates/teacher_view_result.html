@@ -1,0 +1,154 @@
+<style>
+    .main-body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .content-wrapper {
+        margin-top: 150px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .result-table {
+        width: 50%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .result-table th,
+    .result-table td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .result-table th {
+        background-color: #1b1750;
+        color: #ffffff;
+    }
+
+    .result-table tr:hover {
+        background-color: rgba(34, 31, 70, 0.108);
+    }
+
+    .chart-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /* Further reduced chart size */
+    .result-chart {
+        width: 50px;
+        height: 50px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .result-table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .result-table th,
+        .result-table td {
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Smaller charts for mobile */
+        .result-chart {
+            width: 80px;
+            height: 80px;
+        }
+    }
+</style>
+
+
+{% include 'teacher_header.html' %}
+<body class="main-body" >
+    
+    <div class="content-wrapper">
+        {% if data['result'] %}
+        <center>
+            <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">RESULT VIEW</h1>
+        </center>
+        <table class="result-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Total Mark</th>
+                    <th>Mark Awarded</th>
+                    <th>Performance Chart</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stud in data['result'] %}
+                <tr>
+                    <td>{{ stud['fname'] }} {{ stud['lname'] }}</td>
+                    <td>{{ stud['mark_awared'] }}</td>
+                    <td>{{ stud['total_mark'] }}</td>
+                    <td>
+                        <div class="chart-wrapper">
+                            <canvas id="pieChart{{ loop.index }}" class="result-chart"></canvas>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <center>
+            <h1>THERE IS NO DATA!</h1>
+        </center>
+        {% endif %}
+    </div>
+    
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Wait for the DOM to be fully loaded before rendering charts
+        document.addEventListener("DOMContentLoaded", function () {
+            {% for stud in data['result'] %}
+                const correct = parseFloat("{{ stud['total_mark'] }}");
+                const wrong = parseFloat("{{ stud['mark_awared'] }}") - correct;
+                const total = parseFloat("{{ stud['total_mark'] }}")+wrong;
+    
+                const chartData{{ loop.index }} = {
+                    labels: ['Correct', 'Wrong', 'Total'],
+                    datasets: [{
+                        data: [correct, wrong, total],
+                        backgroundColor: ['#4CAF50', '#F44336', '#1E88E5'], // Colors for Correct, Wrong, Total
+                    }]
+                };
+    
+                const chartConfig{{ loop.index }} = {
+                    type: 'pie',
+                    data: chartData{{ loop.index }},
+                };
+    
+                new Chart(
+                    document.getElementById('pieChart{{ loop.index }}'),
+                    chartConfig{{ loop.index }}
+                );
+            {% endfor %}
+        });
+    </script>
+    
+    
+    {% include 'teacher_footer.html' %}
+</body>
