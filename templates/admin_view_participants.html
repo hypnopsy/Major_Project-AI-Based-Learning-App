@@ -1,0 +1,91 @@
+{%include 'adminhomeheader.html'%}
+
+
+<!-- {%if data['part']%}
+<body>
+    <table align="center" border="1">
+        <tr>
+            <th>STUDENT</th>
+            <th>COURSE</th>
+            <th>EXAM</th>
+            <th>DATE</th>
+           
+        </tr>
+        {% for stud in data['part'] %}
+        <tr>
+            <td>{{ stud['fname'] }} {{ stud['lname'] }}</td>
+            <td>{{ stud['course_name'] }}</td>
+            <td>{{ stud['exam_name'] }}</td>
+            <td>{{ stud['date'] }}</td>
+            <td><a href="?action=downlaod&id={{stud['exam_id']}}&sid={{stud['student_id']}}" >Download Report</a></td>
+          </tr>
+        {%endfor%}
+    </table>
+
+    {%else%}
+<center><h1>THERE IS NO PARTICIPANTS !</h1></center>
+{%endif%}
+ -->
+
+
+
+<div class="container py-3 min-vh-100 d-flex flex-column">
+
+
+
+
+
+    {% if data['part']%}
+
+    <!-- Move the Parent Details section here -->
+    <div class="col-md-12 grid-margin" style="margin-top: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">View</p>
+                <div class="row">
+                    <div class="col-10">
+                        <div class="table-responsive">
+                            <table class="display expandable-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>STUDENT</th>
+                                        <th>COURSE</th>
+                                        <th>EXAM</th>
+                                        <th>DATE</th>
+                                        <th></th>
+
+                                    </tr>
+                                    {%for stud in data['part']%}
+
+                                    <tr>
+                                        <td>{{ stud['fname'] }} {{ stud['lname'] }}</td>
+                                        <td>{{ stud['course_name'] }}</td>
+                                        <td>{{ stud['exam_name'] }}</td>
+                                        <td>{{ stud['date'] }}</td>
+                                        <td><a
+                                                href="?action=downlaod&id={{stud['exam_id']}}&sid={{stud['student_id']}}">Download
+                                                Report</a></td>
+
+
+                                    </tr>
+                                    {%endfor%}
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%else%}
+
+<center>
+    <h1>THERE IS NO PARTICIPANTS !</h1>
+</center>
+
+{%endif%}
+
+
+

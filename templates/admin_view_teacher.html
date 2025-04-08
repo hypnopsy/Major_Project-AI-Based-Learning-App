@@ -1,0 +1,117 @@
+{% include 'adminhomeheader.html' %}
+<style>
+    .rejected-row {
+        background-color: rgb(29, 24, 24);
+
+        opacity: 0.5;
+        color: white;
+        pointer-events: none;
+    }
+</style>
+<script>
+    function confirmAssignment() {
+        return confirm("This subject is already assigned to this teacher. Do you want to add it again?");
+    }
+</script>
+
+<div class="col-md-12 grid-margin" style="margin-top: 25px;">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-title">Teacher Details</p>
+            <div class="row">
+                <div class="col-10">
+                    <div class="table-responsive">
+                        <table class="display expandable-table" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>Gender</th>
+                                    <th>Place</th>
+                                    <th>Proof</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Assign Subject</th>
+                                </tr>
+                            </thead>
+                            {% for teacher in data['teacher'] %}
+                                <tr class="{% if teacher['status'] == 'rejected' %}rejected-row{% endif %}">
+                                    <td><img src="/{{ teacher['photo'] }}" class="rounded" alt="Parent Image" width="80px" height="80px"></td>
+                                    <td>{{ teacher['first_name'] }} {{ teacher['last_name'] }}</td>
+                                    <td>{{ teacher['dob'] }}</td>
+                                    <td>{{ teacher['gender'] }}</td>
+                                    <td>{{ teacher['place'] }}</td>
+                                    <td><a href="{{ teacher['proof'] }}">View Proof</a></td>
+                                    <td>{{ teacher['email'] }}</td>
+                                    <td>{{ teacher['phone'] }}</td>
+
+                                    <!-- Status column -->
+                                    <td>
+                                        {% if teacher['status'] == 'pending' %}
+                                            <a href="?action=accept&lid={{teacher['login_id']}}">Accept</a> | 
+                                            <a href="?action=reject&lid={{teacher['login_id']}}">Reject</a>
+                                        {% else %}
+                                            {{ teacher['status'] }}
+                                        {% endif %}
+                                    </td>
+
+                                    <!-- Assign Subject column -->
+                                    <td>
+                                        {% if teacher['status'] == 'approve' %}
+                                            <form method="post">
+                                                <input type="hidden"  name="teacher_id" value="{{ teacher['teacher_id'] }}">
+                                                <select name="subject" >
+                                                    <option value="select">select</option>
+                                                    {% for subject in data['sub'] %}
+                                                        <option value="{{ subject['subject_id'] }}">{{ subject['subject_name'] }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <button type="submit" class="btn btn-info" name="assign" value="assign">Assign</button>
+                                            </form>
+                                        {% else %}
+                                            Not Applicable
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                        {% if data.get('alert') %}
+                            <script>
+                                if (confirm("{{ data['alert'] }}")) {
+                                    // Confirm duplicate assignment
+                                    var form = document.createElement('form');
+                                    form.method = 'POST';
+                                    form.action = "{{ url_for('admin.admin_view_teacher') }}";
+
+                                    var confirmInput = document.createElement('input');
+                                    confirmInput.type = 'hidden';
+                                    confirmInput.name = 'confirm_duplicate';
+                                    confirmInput.value = 'true';
+                                    form.appendChild(confirmInput);
+
+                                    var teacherIdInput = document.createElement('input');
+                                    teacherIdInput.type = 'hidden';
+                                    teacherIdInput.name = 'teacher_id';
+                                    teacherIdInput.value = "{{ data['teacher_id'] }}";
+                                    form.appendChild(teacherIdInput);
+
+                                    var subjectIdInput = document.createElement('input');
+                                    subjectIdInput.type = 'hidden';
+                                    subjectIdInput.name = 'subject_id';
+                                    subjectIdInput.value = "{{ data['subject_id'] }}";
+                                    form.appendChild(subjectIdInput);
+
+                                    document.body.appendChild(form);
+                                    form.submit();
+                                }
+                            </script>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+
+
+
+{%include 'teacher_header.html'%}
+
+
+
+<br><br><br><br><br><br><br><br><br>
+
+<style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        form {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 85%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #1b1750;
+            color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: rgba(34, 31, 70, 0.108);
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            table {
+                width: 1200px;
+            }
+
+            th,
+            td {
+                display: block;
+                width: 100%;
+            }
+      }
+</style>
+
+<center>
+    <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">LESSONS MANAGEMENT</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <td>
+                    <input type="text" class="form-control" name="name" required id="">
+                </td>
+            </tr>
+            <tr>
+                <th>select pdf</th>
+                <td>
+                    <input type="file" name="pdf" required id="">
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><input type="submit" class="btn btn-primary" value="ADD" name="submit" id=""></td>
+            </tr>
+        </table>
+    
+    </form>
+    
+    
+    <table>
+        <tr>
+            <th>Exam</th>
+            <th>File</th>
+            <th>Date</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+        {% for i in data['sel'] %}
+        <tr>
+            <td>{{ i['exam_name'] }}</td>
+            <td>
+                <!-- Embed the PDF or provide a view option -->
+                <iframe src="{{ i['pdf'] }}" width="100%" height="250px"></iframe>
+            </td>
+            <td>{{ i['date'] }}</td>
+            <td>
+                <a class="btn btn-danger" href="?action=delete&lid={{ i['lesson_id'] }}&id={{ data['exam_id'] }}">Delete</a>
+               
+            </td>
+            <td> <a class="btn btn-dark" href="teacher_view_result?lid={{ i['lesson_id'] }}">teacher view result </a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    
+</center>
+<br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+
+{%include 'teacher_footer.html'%}

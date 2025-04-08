@@ -1,0 +1,115 @@
+{%include 'adminhomeheader.html'%}
+
+<!-- {%if data['comp']%}
+<body>
+    <table align="center" border="1">
+        <tr>
+            <th>NAME</th>
+            <th>COMPLAINT</th>
+            <th>DATE</th>
+            <th>REPLY</th>
+          
+        </tr>
+        {% for stud in data['comp'] %}
+        <tr>
+            <td>{{ stud['fname'] }} {{ stud['lname'] }}</td>
+            <td>{{ stud['complaint'] }}</td>
+            <td>{{ stud['date'] }}</td>
+            {%if stud['reply'] == 'pending' %}
+            <td>
+                <form action="" method="post">
+                    <table>
+                        <tr>
+                            <th><input type="text" hidden name="id" value="{{stud['complaint_id']}}" id=""></th>
+                            <th><textarea name="reply" placeholder="reply ...." id=""></textarea></th>
+                            <th><input type="submit" name="sub" value="reply" id=""></th>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+            {%else%}
+            <td>{{stud['reply']}}</td>
+            {%endif%}
+           
+           
+        </tr>
+        {%endfor%}
+    </table>
+
+    {%else%}
+<center><h1>THERE IS NO EXAMS !</h1></center>
+{%endif%}
+
+
+ -->
+
+
+
+
+
+
+<div class="container py-3 min-vh-100 d-flex flex-column" style="margin-top: 20px;">
+
+
+
+    {% if data['comp'] %}
+
+    <!-- Move the Parent Details section here -->
+    <div class="col-md-12 grid-margin" style="margin-top: 50px;">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">View</p>
+                <div class="row">
+                    <div class="col-10">
+                        <div class="table-responsive">
+                            <table class="display expandable-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>COMPLAINT</th>
+                                        <th>DATE</th>
+                                        <th>REPLY</th>
+
+
+                                    </tr>
+                                    {%for stud in data['comp']%}
+
+                                    <tr>
+                                        <td>{{ stud['fname'] }} {{ stud['lname'] }}</td>
+                                        <td>{{ stud['complaint'] }}</td>
+                                        <td>{{ stud['date'] }}</td>
+                                        {%if stud['reply'] == 'pending' %}
+                                        <td>
+                                            <form action="" method="post">
+                                                <table>
+                                                    <tr>
+                                                        <th><input type="text" hidden name="id" value="{{stud['complaint_id']}}" id=""></th>
+                                                        <th><textarea name="reply" placeholder="reply ...." id=""></textarea></th>
+                                                        <th><input type="submit" name="sub" value="reply" id=""></th>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </td>
+                                        {%else%}
+                                        <td>{{stud['reply']}}</td>
+                                        {%endif%}
+                                        
+                                       
+                                        
+                                    </tr>
+                                    {%endfor%}
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%else%}
+
+<center><h1>THERE IS NO COMPLAINTS !</h1></center>
+
+{%endif%}
